@@ -6,7 +6,7 @@ import requests
 # print(response.text)
 
 res_parse_list = []
-response = requests.get("https://coinmarketcap.com/")
+response = requests.get("https://ru.investing.com/currencies/usd-uah")
 response_text = response.text
 response_parse = response_text.split("<span>")
 for parse_elem_1 in response_parse:
@@ -14,5 +14,6 @@ for parse_elem_1 in response_parse:
         for parse_elem_2 in parse_elem_1.split("</span>"):
             if parse_elem_2.startswith("$") and parse_elem_2[1].isdigit():
                 res_parse_list.append(parse_elem_2)
+print(res_parse_list)
 bitcoin_exchange_rate = res_parse_list[0]
-print(bitcoin_exchange_rate)
+print("bitcoin - ", bitcoin_exchange_rate)
